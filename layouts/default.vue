@@ -5,7 +5,7 @@
       <section class="container">
         <h1 id="logo">
           <a href="#" title="谷粒学院">
-            <img src="~/assets/img/logo.png" width="100%" alt="谷粒学院">
+            <img src="~/assets/img/logo.png" width="100%" alt="谷粒学院" />
           </a>
         </h1>
         <div class="h-r-nsl">
@@ -26,44 +26,60 @@
               <a>问答</a>
             </router-link>
           </ul>
-           <!-- / nav -->
+          <!-- / nav -->
           <ul class="h-r-login">
-              <li v-if="!loginInfo.id" id="no-login">
-                  <a href="/login" title="登录">
-                      <em class="icon18 login-icon">&nbsp;</em>
-                      <span class="vam ml5">登录</span>
-                  </a>
-                  |
-                  <a href="/register" title="注册">
-                      <span class="vam ml5">注册</span>
-                  </a>
-              </li>
-              <li v-if="loginInfo.id" id="is-login-one" class="mr10">
-                  <a id="headerMsgCountId" href="#" title="消息">
-                      <em class="icon18 news-icon">&nbsp;</em>
-                  </a>
-                  <q class="red-point" style="display: none">&nbsp;</q>
-              </li>
-              <li v-if="loginInfo.id" id="is-login-two" class="h-r-user">
-                  <a href="/ucenter" title>
-                      <img
-                          :src="loginInfo.avatar"
-                          width="30"
-                          height="30"
-                          class="vam picImg"
-                          alt
-                          >
-                      <span id="userName" >{{loginInfo.nickname}}</span>
-                  </a>
-                  <a href="javascript:void(0);" title="退出" @click="logout()" class="ml5">退出</a>
-              </li>
-              <!-- /未登录显示第1 li；登录后显示第2，3 li -->
+            <li v-if="!loginInfo.id" id="no-login">
+              <a href="/login" title="登录">
+                <em class="icon18 login-icon">&nbsp;</em>
+                <span class="vam ml5">登录</span>
+              </a>
+              |
+              <a href="/register" title="注册">
+                <span class="vam ml5">注册</span>
+              </a>
+            </li>
+            <li v-if="loginInfo.id" id="is-login-one" class="mr10">
+              <a id="headerMsgCountId" href="#" title="消息">
+                <em class="icon18 news-icon">&nbsp;</em>
+              </a>
+              <q class="red-point" style="display: none">&nbsp;</q>
+            </li>
+            <li v-if="loginInfo.id" id="is-login-two" class="h-r-user">
+              <a href="/ucenter" title>
+                <img
+                  :src="loginInfo.avatar"
+                  width="30"
+                  height="30"
+                  class="vam picImg"
+                  alt
+                />
+                <span id="userName">{{ loginInfo.nickname }}</span>
+              </a>
+              <a
+                href="javascript:void(0);"
+                title="退出"
+                @click="logout()"
+                class="ml5"
+                >退出</a
+              >
+            </li>
+            <!-- /未登录显示第1 li；登录后显示第2，3 li -->
           </ul>
+          <!-- 搜索表单 -->
           <aside class="h-r-search">
-            <form action="#" method="post">
+            <form>
               <label class="h-r-s-box">
-                <input type="text" placeholder="输入你想学的课程" name="queryCourse.courseName" value>
-                <button type="submit" class="s-btn">
+                <input
+                  type="text"
+                  placeholder="输入你想学的课程"
+                  v-model="courseName"
+                  value
+                />
+                <button
+                  type="button"
+                  @click="searchCourse(courseName)"
+                  class="s-btn"
+                >
                   <em class="icon18">&nbsp;</em>
                 </button>
               </label>
@@ -76,9 +92,9 @@
         <div class="clear"></div>
       </section>
     </header>
-      
+
     <!-- /公共头引入 -->
-    <nuxt/>
+    <nuxt />
 
     <!-- 公共底引入 -->
     <footer id="footer">
@@ -89,7 +105,9 @@
           </h4>
           <ul class="of flink-list">
             <li>
-              <a href="http://www.atguigu.com/" title="尚硅谷" target="_blank">LeBrwcd</a>
+              <a href="http://www.atguigu.com/" title="尚硅谷" target="_blank"
+                >LeBrwcd</a
+              >
             </li>
           </ul>
           <div class="clear"></div>
@@ -113,12 +131,12 @@
           <aside class="fl col-3 tac mt15">
             <section class="gf-tx">
               <span>
-                <img src="~/assets/img/wx-icon.png" alt>
+                <img src="~/assets/img/wx-icon.png" alt />
               </span>
             </section>
             <section class="gf-tx">
               <span>
-                <img src="~/assets/img/wb-icon.png" alt>
+                <img src="~/assets/img/wb-icon.png" alt />
               </span>
             </section>
           </aside>
@@ -131,104 +149,109 @@
 </template>
 
 <script>
-import '~/assets/css/reset.css'
-import '~/assets/css/theme.css'
-import '~/assets/css/global.css'
-import '~/assets/css/web.css'
-import '~/assets/css/base.css'
-import '~/assets/css/activity_tab.css'
-import '~/assets/css/bottom_rec.css'
-import '~/assets/css/nice_select.css'
-import '~/assets/css/order.css'
-import '~/assets/css/swiper-3.3.1.min.css'
-import "~/assets/css/pages-weixinpay.css"
+import "~/assets/css/reset.css";
+import "~/assets/css/theme.css";
+import "~/assets/css/global.css";
+import "~/assets/css/web.css";
+import "~/assets/css/base.css";
+import "~/assets/css/activity_tab.css";
+import "~/assets/css/bottom_rec.css";
+import "~/assets/css/nice_select.css";
+import "~/assets/css/order.css";
+import "~/assets/css/swiper-3.3.1.min.css";
+import "~/assets/css/pages-weixinpay.css";
 
-import cookie from 'js-cookie';
-import userApi from '@/api/login'
+import cookie from "js-cookie";
+import userApi from "@/api/login";
+import courseApi from "@/api/course";
 
 export default {
-
   data() {
-    return{
-
-        token : '',
-        loginInfo: {
-          id: '',
-          openid: '',
-          mobile: '',
-          password :'',
-          nickname: '',
-          sex: '',
-          age: '',
-          avatar: '',
-         
-          
-      }
-
-    }
+    return {
+      token: "",
+      loginInfo: {
+        id: "",
+        openid: "",
+        mobile: "",
+        password: "",
+        nickname: "",
+        sex: "",
+        age: "",
+        avatar: "",
+      },
+      courseName: "",
+    };
   },
   created() {
-
     //获取url中的token
-    this.token = this.$route.query.token
+    this.token = this.$route.query.token;
 
     //如果url中有token，表示采用微信登录
-    if(this.token) {
-      this.wxLogin()
+    if (this.token) {
+      this.wxLogin();
     }
-    
+
     //展示用户信息
-    this.showUserInfo()
-    
-
-    
+    this.showUserInfo();
   },
-  methods : {
-
-    
-    wxLogin() {
-      if(this.token == '') return
-
-      //把token存入cookie中
-      cookie.set('guli_token',this.token,{domain:'localhost'})
-      
-      //登录成功根据token获取用户信息
-      userApi.getUserInfo().then(response => {
-        this.loginInfo = response.data.data.userInfo
-        //将用户信息存入cookie
-        cookie.set('guli_ucenter',this.loginInfo,{domain:'localhost'})
-      })
+  methods: {
+    searchCourse(courseName) {
+      console.log(
+        "default:",
+        this.$route.query.data,
+        "param:",
+        this.$route.query.param
+      );
+      courseApi.searchCourseByName(courseName).then((response) => {
+        this.$router.push({
+          path: "/course",
+          query: {
+            data: response.data.data,
+            param: courseName,
+          },
+        });
+        this.courseName = ''
+        
+      });
     },
 
+    wxLogin() {
+      if (this.token == "") return;
 
+      //把token存入cookie中
+      cookie.set("guli_token", this.token, { domain: "localhost" });
+
+      //登录成功根据token获取用户信息
+      userApi.getUserInfo().then((response) => {
+        this.loginInfo = response.data.data.userInfo;
+        //将用户信息存入cookie
+        cookie.set("guli_ucenter", this.loginInfo, { domain: "localhost" });
+      });
+    },
 
     //左上角显示登录后的用户信息
     showUserInfo() {
       //从cookie中获取用户信息,从cookie中获取到的是字符串，而页面显示需要json
       // var userStr = "{'name' : 'wcd','age':'20'}"
       //采用JSON.parse将字符串转化为json  {'name' : wcd ,'age' : 20}
-      var userStr = cookie.get('guli_ucenter')
-      console.log(userStr)
-      if(userStr) {
-          //JSON.parse("字符串json")
-          this.loginInfo = JSON.parse(userStr)
+      var userStr = cookie.get("guli_ucenter");
+      console.log(userStr);
+      if (userStr) {
+        //JSON.parse("字符串json")
+        this.loginInfo = JSON.parse(userStr);
       }
       //this.loginInfo = JSON.parse(userStr)
-     
+
       //console.log(JSON.parse(userStr.toString())
-    
     },
 
     //退出账号
     logout() {
-      cookie.set('guli_ucenter',"",{ domain : 'localhost'})
-      cookie.set('guli_token',"",{ domain : 'localhost'})
+      cookie.set("guli_ucenter", "", { domain: "localhost" });
+      cookie.set("guli_token", "", { domain: "localhost" });
 
-      window.location.href = '/'
-    }
-
-  }
-
-
+      window.location.href = "/";
+    },
+  },
 };
 </script>

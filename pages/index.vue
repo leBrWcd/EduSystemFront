@@ -1,9 +1,10 @@
 <template>
   
   <div>
-    <!-- 幻灯片 开始 -->
+    <!-- 幻灯片 开始 --> 
+  
     <div v-swiper:mySwiper="swiperOption" >
-        <div class="swiper-wrapper">
+        <div class="swiper-wrapper" style="width: 12160px;height: 460px;transform: translate3d(-9120px, 0px, 0px);transition-duration: 0.3s;">
             <div v-for="banner in bannerList" :key="banner.id" class="swiper-slide" style="background: #040B1B;">
                 <a target="_blank" :href="banner.linkUrl">
                     <img :src="banner.imageUrl" :alt="banner.title">
@@ -64,7 +65,7 @@
               <div class="clear"></div>
             </article>
             <section class="tac pt20">
-              <a href="#" title="全部课程" class="comm-btn c-btn-2">全部课程</a>
+              <a href="/course" title="全部课程" class="comm-btn c-btn-2">全部课程</a>
             </section>
           </div>
         </section>
@@ -105,7 +106,7 @@
               <div class="clear"></div>
             </article>
             <section class="tac pt20">
-              <a href="#" title="全部讲师" class="comm-btn c-btn-2">全部讲师</a>
+              <a href="/teacher" title="全部讲师" class="comm-btn c-btn-2">全部讲师</a>
             </section>
           </div>
         </section>
@@ -126,6 +127,7 @@ export default {
 
         autoplay:true,  //自动切换幻灯片
         speed : 300,    //切换速度
+        
 
         //配置分页
         pagination: {

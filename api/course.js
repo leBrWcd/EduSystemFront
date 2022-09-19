@@ -28,6 +28,23 @@ export default {
             url :`/eduservice/coursefront/base/${courseId}`,
             method : 'get'
         })
+    },
+
+    // 收藏课程
+    collect(courseId) {
+        return request({
+            url : `/eduservice/coursefront/collect/${courseId}`,
+            method : 'post'
+        })
+    },
+
+    // 搜索课程
+    searchCourseByName(courseName) {
+        return request({
+            url : `/eduservice/coursefront/getCourseByName?courseName=${courseName}`,
+            method : 'get',
+            data : courseName
+        })
     }
 
     

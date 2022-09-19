@@ -82,7 +82,7 @@
               <li v-for="record in data.records" :key="record.id">
                 <div class="cc-l-wrap">
                   <section class="course-img">
-                    <img :src="record.cover" class="img-responsive" :alt="record.title">
+                    <img :src="record.cover" class="img-responsive"  style="h" height="149.21px" :alt="record.title">
                     <div class="cc-mask">
                       <a :href="'/course/'+record.id" title="开始学习" class="comm-btn c-btn-1">开始学习</a>
                     </div>
@@ -97,7 +97,7 @@
                     <span class="fl jgAttr c-ccc f-fA">
                       <i class="c-999 f-fA">{{record.viewCount}}人学习</i>
                       |
-                      <i class="c-999 f-fA">9634评论</i>
+                      <i class="c-999 f-fA">{{record.comment}}评论</i>
                     </span>
                   </section>
                 </div>
@@ -169,17 +169,25 @@ export default {
       twoIndex:-1,
       buyCountSort:"",  //关注度
       gmtCreateSort:"",  //最新
-      priceSort:""   //价格
+      priceSort:"",   //价格
+
+      forwardData : {
+
+      }
     }
 
   },
   created() {
-
-    //查询第一页数据
-    this.queryCourse()
-
     //初始化一级分类
     this.initSubject()
+    this.forwardData = this.$route.query.data
+    if (this.forwardData != undefined) {
+      // 页面
+      this.data = this.forwardData
+    } else {
+      //查询第一页数据
+      this.queryCourse()
+    }
   },
 
   methods : {

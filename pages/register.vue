@@ -121,7 +121,7 @@
                 type: 'success',
                 message: "注册成功"
               })
-              this.$router.push({path: '/login'})
+              r.push({path: '/login'})
             })
           }
         })
