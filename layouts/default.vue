@@ -67,23 +67,23 @@
           </ul>
           <!-- 搜索表单 -->
           <aside class="h-r-search">
-            <form>
               <label class="h-r-s-box">
                 <input
                   type="text"
                   placeholder="输入你想学的课程"
                   v-model="courseName"
                   value
+                  v-on:keyup.13="searchCourse(courseName)"
                 />
                 <button
                   type="button"
+                 
                   @click="searchCourse(courseName)"
                   class="s-btn"
                 >
                   <em class="icon18">&nbsp;</em>
                 </button>
               </label>
-            </form>
           </aside>
         </div>
         <aside class="mw-nav-btn">
