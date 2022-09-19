@@ -1,6 +1,6 @@
-# {{ name }}
+# {{ 谷粒学院前台系统 }}
 
-> {{ description }}
+> {{ 基于Nutrx框架开发 }}
 
 ## Build Setup
 
