@@ -4,8 +4,8 @@
     <header id="header">
       <section class="container">
         <h1 id="logo">
-          <a href="#" title="谷粒学院">
-            <img src="~/assets/img/logo.png" width="100%" alt="谷粒学院" />
+          <a href="#" title="尚课吧 ">
+            <img src="~/assets/img/logo1.png" width="100%" alt="尚课吧 " />
           </a>
         </h1>
         <div class="h-r-nsl">
@@ -120,23 +120,23 @@
                 <a href="#" title="联系我们" target="_blank">联系我们</a>|
                 <a href="#" title="帮助中心" target="_blank">帮助中心</a>|
                 <a href="#" title="资源下载" target="_blank">资源下载</a>|
-                <span>服务热线：010-111111(北京) 0755-1313115(深圳)</span>
+                <span>服务热线：010-111111(广东) 0755-123456(深圳)</span>
                 <span>Email：info@LeBrwcd.com</span>
               </section>
               <section class="b-f-link mt10">
-                <span>©2022课程版权均归谷粒学院所有 京ICP备17055252号</span>
+                <span>©2022课程版权均归尚课吧所有 粤ICP备8888888号</span>
               </section>
             </section>
           </section>
           <aside class="fl col-3 tac mt15">
             <section class="gf-tx">
               <span>
-                <img src="~/assets/img/wx-icon.png" alt />
+                <img src="~/assets/img/wx-icon-hover.png" alt />
               </span>
             </section>
             <section class="gf-tx">
               <span>
-                <img src="~/assets/img/wb-icon.png" alt />
+                <img src="~/assets/img/wb-icon-hover.png" alt />
               </span>
             </section>
           </aside>

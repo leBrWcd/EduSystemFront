@@ -1,5 +1,6 @@
 import axios from 'axios'
 import cookie from 'js-cookie'
+import Vue from 'vue'
 
 //创建axios实例
 const service = axios.create({
@@ -33,7 +34,7 @@ service.interceptors.response.use(
         }else{
             if(response.data.code!==20000) {
                 //25000,订单支付中，不做任何提示
-                if(response.data.code !== 25000)
+                if(response.data.code !== 25000) 
                     Message({
                         message : response.data.message || 'error',
                         type : 'error',

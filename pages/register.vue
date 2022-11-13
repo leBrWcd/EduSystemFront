@@ -116,12 +116,24 @@
         this.$refs['userForm'].validate((valid) => {
           if (valid) {
             registerApi.submitRegister(this.params).then(response => {
-              //提示注册成功
-              this.$message({
-                type: 'success',
-                message: "注册成功"
-              })
-              r.push({path: '/login'})
+
+              console.log(response,"==")
+
+              if(response.data.code == 20000) {
+                //提示注册成功
+                this.$message({
+                  type: 'success',
+                  message: "注册成功"
+                })
+                router.push({path: '/login'})
+              } else {
+                //提示注册成功
+                this.$message({
+                  type: 'error',
+                  message: "该手机号已注册"
+                })
+              }
+              
             })
           }
         })

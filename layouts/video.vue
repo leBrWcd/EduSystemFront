@@ -1,8 +1,8 @@
 <template>
   <div class="guli-player">
     <div class="head">
-      <a href="#" title="谷粒学院">
-        <img class="logo" src="~/assets/img/logo.png" lt="谷粒学院">
+      <a href="#" title="学院">
+        <img class="logo" src="~/assets/img/logo1.png" lt="谷粒学院">
     </a></div>
     <div class="body">
       <div class="content"><nuxt/></div>

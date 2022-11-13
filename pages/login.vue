@@ -1,5 +1,6 @@
 <template>
   <div class="main">
+    <el-button type="primary" class="btn1 " icon="el-icon-arrow-left" @click="goHome()">返回首页</el-button>
     <div class="title">
       <a class="active" href="/login">登录</a>
       <span>·</span>
@@ -66,6 +67,10 @@
     },
     methods: {
 
+      goHome() {
+        location.href = '/'
+      },
+
 
       TowxScan() {
         loginApi.wxScan()
@@ -76,6 +81,29 @@
       submitLogin() {
 
         loginApi.submitLogin(this.user).then(response => {
+
+           if(response.data.code == 20000) {
+                //提示注册成功
+                this.$message({
+                  type: 'success',
+                  message: "登录成功"
+                })
+              
+              } else {
+                //提示登录失败
+                this.$message({
+                  type: 'error',
+                  message: "账号或密码不正确"
+                })
+              }
+
+
+
+
+          console.log("====",response)
+
+
+
            
             //第二步：将token放到cookie
             //cookie.set(name,value,domain作用范围)  domain:表示cookie在什么样的请求才会传递
@@ -106,5 +134,12 @@
 <style>
    .el-form-item__error{
     z-index: 9999999;
-  }
+
+    }
+    .btn1 {
+      position: relative;
+      right: 130px;
+      bottom: 40px;
+      background-color: #187cb7;
+    }
 </style>
