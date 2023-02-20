@@ -30,15 +30,13 @@ service.interceptors.response.use(
         if(response.data.code == 28004) {
             console.log("response.data.resultCode是28004")
             window.location.href='/login'
-            return
         }else{
             if(response.data.code!==20000) {
                 //25000,订单支付中，不做任何提示
                 if(response.data.code !== 25000) 
-                    Message({
+                Vue.prototype.$message({
                         message : response.data.message || 'error',
                         type : 'error',
-                        duration : 5*1000
                     })
             }else{
                 return response;

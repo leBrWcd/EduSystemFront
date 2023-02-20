@@ -1,4 +1,9 @@
 <template>
+  
+  <!-- <div class="login-container"
+       v-bind:style="{backgroundImage:'url(' + bg + ')',
+        backgroundRepeat:'no-repeat',
+        backgroundSize:'100% 100%'}">> -->
   <div class="main">
     <el-button type="primary" class="btn1 " icon="el-icon-arrow-left" @click="goHome()">返回首页</el-button>
     <div class="title">
@@ -8,7 +13,7 @@
     </div>
     <div class="sign-up-container">
       <el-form ref="userForm" :model="user">
-        <el-form-item class="input-prepend restyle" prop="mobile" :rules="[{ required: true, message: '请输入手机号码', trigger: 'blur' },{ trigger: 'blur'}]">
+        <el-form-item class="input-prepend restyle" prop="mobile" :rules="this.rules.phone">
           <div >
             <el-input type="text" placeholder="手机号" v-model="user.mobile"/>
             <i class="iconfont icon-phone" />
@@ -34,6 +39,7 @@
       </div>
     </div>
   </div>
+  <!-- </div> -->
 </template>
 <script>
   import '~/assets/css/sign.css'
@@ -44,6 +50,7 @@
     layout: 'sign',
     data () {
       return {
+        bg : require('@/assets/img/house.jpg'),
         user:{
           mobile:'',
           password:''
@@ -57,8 +64,17 @@
           mobile: '',
           nickname: '',
           sex: ''
-
-
+        },
+         rules: {
+          phone: [{
+            required: true,
+            message: "手机号不能为空",
+            trigger: "blur"
+          }, {
+            pattern: /^1[3|4|5|6|7|8|9][0-9]\d{8}$/,
+            message: "请输入正确的手机号码",
+            trigger: "blur"
+          }]
         }
       }
     },
@@ -80,8 +96,8 @@
      //第一步：调用接口进行登录，返回token字符串
       submitLogin() {
 
+        // 校验手机号
         loginApi.submitLogin(this.user).then(response => {
-
            if(response.data.code == 20000) {
                 //提示注册成功
                 this.$message({
@@ -90,16 +106,13 @@
                 })
               
               } else {
+                alert(response.data.message)
                 //提示登录失败
                 this.$message({
                   type: 'error',
-                  message: "账号或密码不正确"
+                  message: response.data.message
                 })
               }
-
-
-
-
           console.log("====",response)
 
 
